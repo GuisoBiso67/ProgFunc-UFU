@@ -1,0 +1,31 @@
+ghci> 6 `div` 3 // 2
+ghci> div 6 3 // 2
+ghci> 10 `mod` 7 // 3 (resto da divisão)
+ghci> mod 10 4 == 2 // True
+ghci> 5^3 // 125
+ghci> 5**3 // 125.0
+ghci> 5^(-3) // Exception: Negative exponent
+ghci> 5**(-3) // 8.0e-3
+ghci> 2^3^4 // 2417851639229258349412352
+ghci> 2**3**4 // 2.4178516392292583e24
+ghci> 4*2^3 // 32
+ghci> sqrt ((5**2) + (9**2)) // 10.295630140987
+ghci> sqrt 25 + 73 // 5 + 73 = 78.0
+ghci> sin(pi/6) // 0.49999999999999994
+ghci> cos 0.5 // 0.8775825618903728
+ghci> (+) 1 ((+) 2 3) // 6
+ghci> 36*14 == 450-23/2 // False
+ghci> length ['a'..'z'] // 26
+ghci> "codigo" ++ "-fonte" // "codigo-fonte"
+ghci> if 12>5 then 100 else 200 // 100
+ghci> sum [1..115] // 6670
+ghci> log 2.718 // 0.999896315728952
+ghci> log 10 // 2.302585092994046, 'log' uses euler number as base
+ghci> exp 2 // 7.38905609893065
+ghci> logBase 10 10 // logBase 'base' 'number'
+ghci> floor (exp 2) // 7
+ghci> log (exp 2) // 2.0
+ghci> (sin x)^2 + (cos x)^2 where x = 2 // parse error on input ‘where’, test againcle
+ghci> pi * r * r where r = 3 // same as above;
+ghci> add 2 3 where add a b = a + b // same as above;
+ghci> add 4 5 // i need to declare the function;
