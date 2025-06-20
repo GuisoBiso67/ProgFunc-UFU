@@ -1,2 +1,2 @@
 # ProgFunc-UFU
-exercícios da matéria de programação funcional
+exercícios da matéria de Programação Funcional
