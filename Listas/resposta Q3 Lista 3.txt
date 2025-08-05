@@ -1,0 +1,15 @@
+-- 1. Vantagens da recursão de cauda
+--Sim, existem vantagens importantes em se usar recursão de cauda:
+--Eficiência de memória: Em linguagens como Haskell, a recursão de cauda permite (em algumas situações) que o compilador otimize a função, reutilizando a mesma stack frame em vez de empilhar novas chamadas. Isso evita estouro de pilha (stack overflow) em chamadas muito profundas.
+--Desempenho: Como não há trabalho pendente após a chamada recursiva (nenhum cálculo extra depois da chamada), o compilador pode transformar a recursão em um loop imperativo, que é geralmente mais rápido.
+
+-- 2. Diferença entre avaliação lazy e strict
+-- Sim, a estratégia de avaliação (lazy ou strict) influencia:
+-- Lazy evaluation (preguiçosa):
+-- É o padrão em Haskell.
+-- Mesmo com recursão de cauda, valores acumulados podem não ser avaliados imediatamente, gerando thunks (estruturas suspensas).
+-- Isso pode aumentar o uso de memória, pois os thunks se acumulam, e a recursão de cauda não tem o mesmo efeito otimizado esperado.
+-- Strict evaluation (estrita):
+-- Avalia os argumentos assim que são passados.
+-- Nesse caso, recursão de cauda funciona de fato como otimização, porque não há thunks acumulados.
+-- Para aproveitar isso em Haskell, é comum usar ! (bang pattern) ou seq para forçar avaliação, ou até usar funções strictas da biblioteca padrão (como foldl' em vez de foldl).
