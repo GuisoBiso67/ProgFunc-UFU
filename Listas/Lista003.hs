@@ -146,6 +146,22 @@ empacota (x:y:xs)
       in (x : firstGroup) : otherGroups
    | otherwise = [x] : empacota (y:xs)
 
+-- Q33
+replique :: [a] -> Int -> [a]
+replique xs 0 = []
+replique [] _ = []
+replique (x:xs) n = x : replique [x] (n-1) ++ replique xs n
+
+-- Q37 
+combinacoes :: Int -> [a] -> [[a]]
+combinacoes 0 _ = [[]]
+combinacoes _ [] = []
+combinacoes n (x:xs) = com_x ++ sem_x
+   where
+      subCombinacoes = combinacoes (n-1) xs
+      com_x = [ (x:sub) | sub <- subCombinacoes ]
+      sem_x = combinacoes n xs
+
 -- Q42
 num_tri :: Int -> [Int]
 num_tri 0 = [0]
