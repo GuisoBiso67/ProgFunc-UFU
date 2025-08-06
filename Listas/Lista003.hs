@@ -68,8 +68,83 @@ retornaListaSup n (x:xs)
    | n < x = x : retornaListaSup n xs
    | otherwise = retornaListaSup n xs
    
--- Q9
+-- Q10
+-- estrutura: [expressão_de_saida | gerador, filtro]
+intersecao :: Eq t => [t] -> [t] -> [t]
+intersecao as bs = [a | a <- as, (elem a bs)]
 
+-- Q11
+returnNeg :: (Num t, Ord t) => [t] -> [t]
+returnNeg as = [a | a <- as, a<0]
+
+-- Q13
+tabuada :: Int -> [(Int, Int, Int)]
+tabuada n = [(n,i,n*i) | i <- [1..10]]
+
+-- Q14
+transf :: [a] -> [a]
+transf xs
+   | length xs<4 = xs
+   | otherwise =
+      let n           = length xs
+          first       = xs !! 0
+          second      = xs !! 1
+          penultimate = xs !! (n-2)
+          last        = xs !! (n-1)
+          mid         = take (n-4) (drop 2 xs)
+      in [second, first] ++ mid ++ [last, penultimate]
+
+-- Q16
+produto :: Num a => [a] -> a
+produto [x] = x
+produto (x:xs) = x* produto xs
+
+-- Q17 
+ultimo :: [a] -> a -> [a]
+ultimo xs n = xs ++ [n]
+
+-- Q18
+concatena :: [a] -> [a] -> [a]
+concatena []     ys = ys
+concatena (x:xs) ys = x : (concatena xs ys)
+
+-- Q19
+crivo :: [Int] -> [Int]
+crivo [] = []
+crivo (p:ps) = p : crivo [x | x <- ps, not (x `mod` p == 0)]
+
+-- Q24
+rotacoes :: [a] -> [[a]]
+rotacoes xs =
+   let n = length xs
+   in [ drop i xs ++ take i xs | i <- [0..n-1] ]
+   
+-- Q25
+supMed :: (Fractional a, Ord a) => [a] -> [a]
+supMed xs =
+   let m = (sum xs) / fromIntegral (length xs)
+   in [x | x <- xs, x > m]
+   
+-- Q26
+maximos :: Ord a => [(a,a)] -> [a]
+maximos [] = []
+maximos ((x,y):pares) = max x y : maximos pares
+
+-- Q30
+comprime :: Eq a => [a] -> [a]
+comprime [] = []
+comprime [x] = [x]
+comprime (x:y:xs) = if x==y then comprime (y:xs) else [x] ++ comprime (y:xs)
+
+-- Q31
+empacota :: Eq a => [a] -> [[a]]
+empacota [] = []
+empacota [x] = [[x]]
+empacota (x:y:xs)
+   | x==y = 
+      let (firstGroup : otherGroups) = empacota (y:xs)
+      in (x : firstGroup) : otherGroups
+   | otherwise = [x] : empacota (y:xs)
 
 -- Q42
 num_tri :: Int -> [Int]
