@@ -1,0 +1,6 @@
+Belo Horizonte 2500000
+Rio de Janeiro 6700000
+São Paulo 12300000
+Uberlândia 700000
+Salvador 2900000
+Porto Alegre 1500000
